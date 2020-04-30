@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="153b291c-6c59-4260-80f2-8b51c2921c3a" name="Default Changelist" comment="" />
+    <list default="true" id="153b291c-6c59-4260-80f2-8b51c2921c3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ActionHistory/ActionHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/GalaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/SimpleGalaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/SeatService/SeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/SeatService/SeatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/SeatService/SimpleSeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/SeatService/SimpleSeatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ShowService/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ShowService/ShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ShowService/SimpleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ShowService/SimpleShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Show/OperaShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/OperaShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Show/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Show/TheaterShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/TheaterShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Proiect.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/SeatService/SeatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SeatService/SeatService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/SeatService/SimpleSeatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SeatService/SimpleSeatService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/ShowService/ShowService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ShowService/ShowService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/ShowService/SimpleShowService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ShowService/SimpleShowService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Show/OperaShow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Show/OperaShow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Show/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Show/Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Show/TheaterShow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Show/TheaterShow.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,11 +36,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -28,7 +56,10 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectId" id="1aCvACLeWuRLon69c9V7yumB8tx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -72,5 +103,18 @@
       <updated>1586252244954</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,9 +1,14 @@
 package Show;
 
+import Gala.Gala;
+import Service.GalaService.GalaService;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,7 +18,7 @@ public class OperaShow extends Show {
 
     public OperaShow(int nOfRows, int nOfSeatsOnRow, String name, String location, LocalDateTime timeOfShow, List<String> singerNames) {
         super(nOfRows, nOfSeatsOnRow, name, location, timeOfShow);
-        singerNames = singerNames;
+        this.singerNames = singerNames;
     }
 
     @Override
@@ -25,4 +30,14 @@ public class OperaShow extends Show {
                 ", timeOfShow=" + timeOfShow +
                 '}';
     }
+    public String getDataForCSV(){
+        String data =  name + "," + location + "," + timeOfShow.toString() + "," + seatService.getSeatsForCSV() + "," + OperaShow.class.toString() + ",";
+
+        for(String name : singerNames){
+            data += name + ";";
+        }
+
+        return data;
+    }
+
 }

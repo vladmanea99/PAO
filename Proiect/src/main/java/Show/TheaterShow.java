@@ -1,9 +1,14 @@
 package Show;
 
+import Gala.Gala;
+import Service.GalaService.GalaService;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,4 +30,15 @@ public class TheaterShow extends Show {
                 ", timeOfShow=" + timeOfShow +
                 '}';
     }
+    public String getDataForCSV(){
+        String data =  name + "," + location + "," + timeOfShow.toString() + "," + seatService.getSeatsForCSV() + "," + TheaterShow.class.toString() + ",";
+
+        for(String name : actorNames){
+            data += name + ";";
+        }
+
+        return data;
+    }
+
+
 }

@@ -1,17 +1,39 @@
+import ActionHistory.ActionHistory;
 import Gala.Gala;
 import Seat.Seat;
+import Service.GalaService.GalaService;
+import Service.GalaService.SimpleGalaService;
 import Service.SeatService.SimpleSeatService;
 
+import Service.ShowService.ShowService;
+import Service.ShowService.SimpleShowService;
 import Show.Show;
 import Show.TheaterShow;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import Show.*;
 
 public class Main {
+    static GalaService galaService;
 
+    static void addShowsFromCSVToGalas(){
+        List<Show> allShows = ShowService.readCSV("shows.csv");
+        for(Show show : allShows){
+            for(Gala gala : galaService.getGalas()){
+
+                if (show.getLocation().toLowerCase().equals(gala.getName().toLowerCase())){
+
+                        gala.getShowService().addShow(show);
+                        break;
+                }
+            }
+        }
+    }
 
     static int getNumber(){
         Scanner scanner = new Scanner(System.in);
@@ -30,19 +52,13 @@ public class Main {
         return number;
     }
 
-    public static void main(String[] args) {
+    static void init(){
+        galaService =  new SimpleGalaService();
 
 
-        List<Gala> galas = new ArrayList<>();
-
-        Gala gala = new Gala("Teatrul National");
-        galas.add(gala);
-        gala = new Gala("Lipscani");
-        galas.add(gala);
-        gala = new Gala("Regina Elizabeta");
-        galas.add(gala);
-
-        galas.sort(new Comparator<Gala>() {
+        galaService.readCSV("galas.csv");
+        addShowsFromCSVToGalas();
+        galaService.getGalas().sort(new Comparator<Gala>() {
             @Override
             public int compare(Gala gala, Gala t1) {
                 return gala.getName().toLowerCase().compareTo(t1.getName().toLowerCase());
@@ -50,7 +66,7 @@ public class Main {
         });
         //Just because I need a different collection besides lists
         HashMap<String, Gala> hashGalas = new HashMap<>();
-        for (Gala currGala : galas){
+        for (Gala currGala : galaService.getGalas()){
             hashGalas.put(currGala.getName(), currGala);
         }
         Iterator it = hashGalas.entrySet().iterator();
@@ -60,6 +76,12 @@ public class Main {
             it.remove();
         }
         System.out.println("");
+
+        ActionHistory.readCSVActions("actions.csv");
+    }
+    public static void main(String[] args) {
+
+        init();
 
         System.out.println("Available commands: ");
         System.out.println("1. Show available galas");
@@ -79,9 +101,10 @@ public class Main {
         while (number == 1){
 
             if (number == 1) {
-                for (int i = 1; i <= galas.size(); i++) {
-                    System.out.println(i + " " + galas.get(i - 1).getName());
+                for (int i = 1; i <= galaService.getGalas().size(); i++) {
+                    System.out.println(i + " " + galaService.getGalas().get(i - 1).getName());
                 }
+                ActionHistory.addAction("See galas");
             }
             System.out.println("Available commands: ");
             System.out.println("1. Show available galas");
@@ -90,9 +113,10 @@ public class Main {
             number = getNumber();
         }
         if (number == 2) {
+            ActionHistory.addAction("Choose gala");
             System.out.println("Choose a gala by its number");
             number = getNumber();
-            currentGala = galas.get(number - 1);
+            currentGala = galaService.getGalas().get(number - 1);
             System.out.println("Available commands: ");
             System.out.println("1. View shows");
             System.out.println("2. Pick a show by it's number in the list");
@@ -104,6 +128,7 @@ public class Main {
             while (number != 2){
 
                 if (number == 1) {
+                    ActionHistory.addAction("View shows of current gala");
                     if(currentGala.getShowService().getShows().size() == 0){
                         System.out.println("There are no current shows at this gala");
                     }
@@ -114,6 +139,7 @@ public class Main {
                     }
                 }
                 else if (number == 3) {
+                    ActionHistory.addAction("Add show to current gala");
                     System.out.println("Number of rows:");
                     int numberOfRows = getNumber();
                     System.out.println("Number of seats per row:");
@@ -150,10 +176,14 @@ public class Main {
                     }
                     System.out.println(currentGala.getShowService().getShows());
                 } else if (number == 4) {
+                    ActionHistory.addAction("Remove show from current gala");
                     number = getNumber();
                     //TODO FA VERIFICARI
                     currentGala.getShowService().cancelShow(currentGala.getShowService().getShows().get(number - 1));
                 } else if (number == 5) {
+                    ActionHistory.addAction("Exit");
+                    ShowService.writeShowCSV("shows.csv", galaService);
+                    ActionHistory.writeCSV("actions.csv");
                     System.exit(0);
                 }
                 System.out.println("Available commands: ");
@@ -165,6 +195,7 @@ public class Main {
                 number = getNumber();
             }
                 if (number == 2) {
+                    ActionHistory.addAction("Choose show from current gala");
                     System.out.println("Choose show by number:");
                     number = getNumber();
                     currentShow = currentGala.getShowService().getShows().get(number - 1);
@@ -178,6 +209,7 @@ public class Main {
                     number = getNumber();
                     while(number != 5) {
                         if (number == 1) {
+                            ActionHistory.addAction("View seats");
                             Seat[][] seats = currentShow.getSeatService().getSeats();
                             for (int i = 0; i < seats.length; i++) {
                                 System.out.print("Row " + i + ": ");
@@ -198,12 +230,15 @@ public class Main {
                             int endSeat = getNumber();
 
                             if(number == 2) {
+                                ActionHistory.addAction("Buy seats");
                                 currentShow.getSeatService().buySeats(beginRow, endRow, beginSeat, endSeat);
                             }
                             else if(number == 3){
+                                ActionHistory.addAction("Reserve seats");
                                 currentShow.getSeatService().reserveSeats(beginRow, endRow, beginSeat, endSeat);
                             }
                             else if(number == 4){
+                                ActionHistory.addAction("Cancel seats");
                                 currentShow.getSeatService().cancelSeats(beginRow, endRow, beginSeat, endSeat);
                             }
                         }
@@ -216,13 +251,25 @@ public class Main {
 
                         number = getNumber();
                     }
+                    if(number == 5){
+                        ActionHistory.addAction("Exit");
+                        ActionHistory.writeCSV("actions.csv");
+                        ShowService.writeShowCSV("shows.csv", galaService);
+                    }
             }
         } else if (number == 3) {
+            ActionHistory.addAction("Exit");
+            ActionHistory.writeCSV("actions.csv");
+            galaService.writeCSV("galas.csv");
+            ShowService.writeShowCSV("shows.csv", galaService);
             System.exit(0);
         } else {
+            ActionHistory.addAction("Unknown command");
             System.out.println("Command not found");
+            ActionHistory.writeCSV("actions.csv");
         }
 
     }
+
 }
 

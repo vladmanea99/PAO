@@ -22,4 +22,8 @@ public abstract class Show {
         this.location = location;
         this.timeOfShow = timeOfShow;
     }
+
+    public String getDataForCSV(){
+        return name + "," + location + "," + timeOfShow.toString() + "," + seatService.getSeatsForCSV();
+    }
 }

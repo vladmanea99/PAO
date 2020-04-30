@@ -9,4 +9,8 @@ public interface SeatService {
     void reserveSeats(int beginRow, int endRow, int beginSeat, int endSeat);
     void cancelSeats(int beginRow, int endRow, int beginSeat, int endSeat);
     Seat[][] getSeats();
+    int getNumberOfRows();
+    int getNumberOfSeatsPerRow();
+    String getSeatsForCSV();
+
 }

@@ -89,4 +89,26 @@ public class SimpleSeatService implements SeatService{
     public Seat[][] getSeats() {
         return seats;
     }
+
+    @Override
+    public int getNumberOfRows() {
+        return seats.length;
+    }
+
+    @Override
+    public int getNumberOfSeatsPerRow() {
+        return seats[0].length;
+    }
+
+    @Override
+    public String getSeatsForCSV() {
+        StringBuilder stringBuilder = new StringBuilder(seats.length + "," +seats[0].length+",");
+
+        for (int i = 0; i < seats.length; i++){
+            for (int j = 0; j < seats[0].length; j++){
+                stringBuilder.append(seats[i][j].getState().toString()).append(";");
+            }
+        }
+        return stringBuilder.toString();
+    }
 }
