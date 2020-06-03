@@ -40,4 +40,12 @@ public class OperaShow extends Show {
         return data;
     }
 
+    public String getNames(){
+        String names = "";
+        for (String name : singerNames){
+            names += name + ";";
+        }
+        return names;
+    }
+
 }

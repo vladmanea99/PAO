@@ -26,4 +26,6 @@ public abstract class Show {
     public String getDataForCSV(){
         return name + "," + location + "," + timeOfShow.toString() + "," + seatService.getSeatsForCSV();
     }
+
+    public abstract String getNames();
 }

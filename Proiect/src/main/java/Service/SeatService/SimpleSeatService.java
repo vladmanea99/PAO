@@ -102,7 +102,7 @@ public class SimpleSeatService implements SeatService{
 
     @Override
     public String getSeatsForCSV() {
-        StringBuilder stringBuilder = new StringBuilder(seats.length + "," +seats[0].length+",");
+        StringBuilder stringBuilder = new StringBuilder("");
 
         for (int i = 0; i < seats.length; i++){
             for (int j = 0; j < seats[0].length; j++){

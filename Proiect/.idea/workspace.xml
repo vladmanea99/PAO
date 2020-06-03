@@ -2,24 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="153b291c-6c59-4260-80f2-8b51c2921c3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ActionHistory/ActionHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/GalaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/SimpleGalaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.20.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UIThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proiect.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Gala/Gala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Gala/Gala.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/SeatService/SeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/SeatService/SeatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/GalaService/GalaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/GalaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/GalaService/SimpleGalaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/GalaService/SimpleGalaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/SeatService/SimpleSeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/SeatService/SimpleSeatService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/ShowService/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ShowService/ShowService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/ShowService/SimpleShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ShowService/SimpleShowService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Show/OperaShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/OperaShow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Show/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/Show.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Show/TheaterShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Show/TheaterShow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Proiect.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Gala/Gala.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Gala/Gala.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/SeatService/SeatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SeatService/SeatService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/GalaService/GalaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/GalaService/GalaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/GalaService/SimpleGalaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/GalaService/SimpleGalaService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Service/SeatService/SimpleSeatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/SeatService/SimpleSeatService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Service/ShowService/ShowService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ShowService/ShowService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Service/ShowService/SimpleShowService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ShowService/SimpleShowService.class" afterDir="false" />
@@ -27,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Show/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Show/Show.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Show/TheaterShow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Show/TheaterShow.class" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,37 +46,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectId" id="1aCvACLeWuRLon69c9V7yumB8tx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\Desktop\github\PAO\Proiect\lib" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -109,12 +100,41 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1591014276731">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591014276731" />
+    <state width="1560" height="158" key="GridCell.Tab.0.bottom" timestamp="1591185519545">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1560" height="158" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591185519545" />
+    <state width="1560" height="158" key="GridCell.Tab.0.center" timestamp="1591185519544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1560" height="158" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591185519544" />
+    <state width="1560" height="158" key="GridCell.Tab.0.left" timestamp="1591185519544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1560" height="158" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591185519544" />
+    <state width="1560" height="158" key="GridCell.Tab.0.right" timestamp="1591185519544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1560" height="158" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591185519544" />
+    <state x="679" y="118" width="998" height="708" key="SettingsEditor" timestamp="1591023751217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="679" y="118" width="998" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591023751217" />
+    <state x="342" y="140" key="new project wizard" timestamp="1590758794131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="140" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1590758794131" />
   </component>
 </project>

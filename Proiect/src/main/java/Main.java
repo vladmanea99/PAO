@@ -12,13 +12,29 @@ import Show.TheaterShow;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.sql.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import Show.*;
 
 public class Main {
+
+    static GalaService galaService;
+    public static void main(String[] args) {
+        galaService = new SimpleGalaService();
+        UIThread uiThread = new UIThread();
+        Thread thread = new Thread(uiThread, "UIThread");
+        thread.start();
+
+
+    }
+    static GalaService getGalaService(){
+        return galaService;
+    }
+    /*
     static GalaService galaService;
 
     static void addShowsFromCSVToGalas(){
@@ -270,6 +286,6 @@ public class Main {
         }
 
     }
-
+    */
 }
 

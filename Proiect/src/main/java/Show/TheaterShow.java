@@ -40,5 +40,12 @@ public class TheaterShow extends Show {
         return data;
     }
 
+    public String getNames(){
+        String names = "";
+        for (String name : actorNames){
+            names += name + ";";
+        }
+        return names;
+    }
 
 }

@@ -53,4 +53,12 @@ public interface ShowService {
         }
     }
 
+    public Show getShowDB(String name, String gala_name);
+    public void updateShowDB(Show show, String column_name, String newData, boolean isDate);
+    public void updateShowDB(Show show, String column_name, int newData);
+    public void deleteShowDB(Show show);
+    public void deleteShowDB(String show_name, String gala_name);
+    public void insertShowDB(Show show);
+    public List<Show> getShowsOfAGalaDB(String gala_name);
+
 }

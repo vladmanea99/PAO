@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.io.*;
+import java.sql.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -87,6 +89,178 @@ public class SimpleShowService implements ShowService {
             showDatas.forEach(pw::println);
         }
         catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Show getShowDB(String name, String gala_name) {
+        Show show = null;
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("Select * from shows " +
+                                                            "where show_name = " + "'" + name + "'" + " and " +
+                                                            "gala_name = " +  "'" + gala_name + "'" + ";")){
+            while(resultSet.next()){
+                int number_of_rows = resultSet.getInt("number_of_rows");
+                int number_of_seats_per_row = resultSet.getInt("number_of_seats_per_row");
+                String show_seats = resultSet.getString("seats");
+                String show_type = resultSet.getString("show_type");
+                String actor_names = resultSet.getString("actor_names");
+
+                List<String>names = Arrays.stream(actor_names.split(";")).collect(Collectors.toList());
+                String[] states = show_seats.split(";");
+                LocalDateTime show_date = LocalDateTime.parse(resultSet.getString("show_date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                if (show_type.toLowerCase().equals(OperaShow.class.toString().toLowerCase())){
+                    show = new OperaShow(number_of_rows, number_of_seats_per_row, name, gala_name, show_date, names);
+                    System.out.println("O");
+                }
+                else if(show_type.toLowerCase().equals(TheaterShow.class.toString().toLowerCase())){
+                        show = new TheaterShow(number_of_rows, number_of_seats_per_row, name, gala_name, show_date, names);
+                        System.out.println("T");
+                }
+                Seat[][] seats = show.getSeatService().getSeats();
+                for(int i = 0; i < seats.length; i++){
+                    for(int j = 0; j < seats[0].length; j++){
+                        seats[i][j].setState(SeatState.valueOf(states[i*seats[0].length + j]));
+                    }
+                }
+                return show;
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override
+    public void insertShowDB(Show show) {
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+            Statement statement = connection.createStatement()){
+            int result = statement.executeUpdate("Insert into shows values(" +
+                                                "'" + show.getName() + "'"  + "," +
+                                                "'" + show.getLocation() + "'"+ "," +
+                                                "'" + show.getTimeOfShow().toString() + "'" + "," +
+                                                show.getSeatService().getNumberOfRows() + "," +
+                                                show.getSeatService().getNumberOfSeatsPerRow() + "," +
+                                                "'" + show.getSeatService().getSeatsForCSV() + "'" + "," +
+                                                "'" + show.getClass().toString() + "'" + "," +
+                                                "'" + show.getNames() + "'" +
+                                                ")" + ";");
+            System.out.println(result);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Show> getShowsOfAGalaDB(String gala_name) {
+        List<Show> shows = new ArrayList<Show>();
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("Select * from shows " +
+                    "where gala_name = " + "'" + gala_name + "'" + ";")){
+            while(resultSet.next()){
+                String show_name = resultSet.getString("show_name");
+                int number_of_rows = resultSet.getInt("number_of_rows");
+                int number_of_seats_per_row = resultSet.getInt("number_of_seats_per_row");
+                String show_seats = resultSet.getString("seats");
+                String show_type = resultSet.getString("show_type");
+                String actor_names = resultSet.getString("actor_names");
+
+                List<String>names = Arrays.stream(actor_names.split(";")).collect(Collectors.toList());
+                String[] states = show_seats.split(";");
+                Show show = null;
+                LocalDateTime show_date = LocalDateTime.parse(resultSet.getString("show_date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                if (show_type.toLowerCase().equals(OperaShow.class.toString().toLowerCase())){
+                    show = new OperaShow(number_of_rows, number_of_seats_per_row, show_name, gala_name, show_date, names);
+                    System.out.println("O");
+                }
+                else if(show_type.toLowerCase().equals(TheaterShow.class.toString().toLowerCase())){
+                    show = new TheaterShow(number_of_rows, number_of_seats_per_row, show_name, gala_name, show_date, names);
+                    System.out.println("T");
+                }
+                Seat[][] seats = show.getSeatService().getSeats();
+                for(int i = 0; i < seats.length; i++){
+                    for(int j = 0; j < seats[0].length; j++){
+                        seats[i][j].setState(SeatState.valueOf(states[i*seats[0].length + j]));
+                    }
+                }
+                if(shows != null){
+                    shows.add(show);
+                }
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return shows;
+    }
+
+    @Override
+    public void deleteShowDB(Show show) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+             Statement statement = connection.createStatement()){
+             int result = statement.executeUpdate("Delete from shows where " +
+                                                     "show_name = " + "'" + show.getName() + "'" +
+                                                     "and " + "gala_name = " + "'" + show.getLocation() + "'" +
+                                                     ";");
+            System.out.println(result);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteShowDB(String show_name, String gala_name) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+             Statement statement = connection.createStatement()){
+            int result = statement.executeUpdate("Delete from shows where " +
+                    "show_name = " + "'" + show_name + "'" +
+                    "and " + "gala_name = " + "'" + gala_name + "'" +
+                    ";");
+            System.out.println(result);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateShowDB(Show show, String column_name, String newData, boolean isDate) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+             Statement statement = connection.createStatement()){
+            int result = statement.executeUpdate("update shows set " +
+                    column_name + "=" + "'" + (isDate ? LocalDateTime.parse(newData, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")):newData) + "'" +
+                    "where " + "show_name" + " = " + "'" + show.getName() + "'" +
+                    " and " + "gala_name" + " = " + "'" + show.getLocation() + "'" +
+                    ";");
+            System.out.println(result);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateShowDB(Show show, String column_name, int newData) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_proiect?useSSL=false", "root", "root");
+             Statement statement = connection.createStatement()){
+            int result = statement.executeUpdate("update shows set " +
+                    column_name  + "=" + newData +
+                    "where " + "show_name" + " = " + "'" + show.getName() + "'" +
+                    " and " + "gala_name" + " = " + "'" + show.getLocation() + "'" +
+                    ";");
+            System.out.println(result);
+        }
+        catch (SQLException e){
             e.printStackTrace();
         }
     }
